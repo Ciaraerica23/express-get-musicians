@@ -5,8 +5,9 @@ const {sequelize} = require("./db")
 
 const port = 3000;
 
-app.get('/musicians',async(req,res)=>{
-    const found = await Musician.findAll()
+app.get('/musicians/:id',async(req,res)=>{
+    const id = req.params.id
+    const found = await Musician.findByPk(id)
     res.json(found)
 })
 
